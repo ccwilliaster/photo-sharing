@@ -1,0 +1,50 @@
+.comment-container {
+  background-color: white;
+  border: 1px solid DimGray;
+  padding: 0px;
+}
+
+.comment-header {
+  color: white;
+  font-weight: bold;
+  padding: 0px 5px;
+  background-color: #428bca;
+  border-bottom: 1px solid DimGray;
+}
+
+.comment-body {
+  position: relative;
+  padding: 3px 10px;
+  margin-top: 5px;
+  background-color: Gainsboro;
+}
+
+.comment-text {
+  color: black;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.comment-time {
+  color: #999;
+  font-size: 12px;
+  float: right;
+}
+
+.last-comment a {
+  float: right;
+  color: #428bca;
+  font-size: 13px;
+}
+
+.last-comment a:hover {
+  color: #d9534f;
+}
+
+.last-comment {
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 15px;
+  color: #d9534f;
+  padding: 10px;
+}

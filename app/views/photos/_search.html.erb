@@ -1,0 +1,16 @@
+<% if @results.size > 0 %>
+  <table class="thumbnails">
+    <% @results.each do |photo| %> 
+      <tr class="search-result">
+        <td class="photo-thumbnail">
+          <%= # This links to this photo anchor on the photo user page
+              link_to( image_tag(photo.file_name), 
+                       user_path(photo.user) + "#photo_#{photo.id.to_s}" ) %>
+        </td> 
+        <td class="thumbnail-text">
+          <%= "#{photo.user.full_name}'s photo" %>
+        </td>
+      </div> 
+    <% end %>
+  </table>
+<% end %>

@@ -1,0 +1,9 @@
+<div class="comment-author">
+  <%= link_to author.full_name, user_path(author.id), class: "user-page" %> 
+  <span class="comment-time">
+    <%= comment.date_time.getlocal.strftime("on %b %e at %l:%M %p") %> 
+  </span>
+</div>
+<div class="comment-text">
+  <%= comment.comment %>
+</div>

@@ -1,0 +1,39 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag "Tagger.js", :type => "text/javascript" %>
+  <script type="text/javascript">
+      console.log("test");
+    window.onload = function() {
+      <% @tags.each do |tag| %>
+        Tagger.showTag("photo-div",
+                       <%= tag.originX %>,
+                       <%= tag.originY %>,
+                       <%= tag.width %>,
+                       <%= tag.height %>,
+                       "<%= tag.user.full_name %>"); 
+      <% end %> 
+    }
+  </script>
+<% end %>
+
+<div class="container">
+  <br />
+  <% if flash.notice %>
+    <div id="notices"><%= flash.notice %></div>
+    <% flash.notice = nil %>
+  <% end %>
+  <div class="photo-break"></div>
+  <%= render partial: "shared/photo_tag", 
+             locals: { photo: @photo, new_tag: false, show_tag: true } %>
+
+  <div class="tag-index-header"> 
+    <% if @tags.size > 0 then %>
+      Hover over tags to see user names!
+      <br />
+    <% else %>
+      No users are tagged in this photo yet!
+      <br />
+      <%= link_to "add tag", new_photo_tag_path(@photo) %> or 
+    <% end %>
+     <%= link_to "back to all photos", user_path(@photo.user) %>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<% content_for :stylesheet do %> 
+  <%= stylesheet_link_tag "show_photo" %>
+  <%= stylesheet_link_tag "show_comment" %>
+<% end %>
+
+
+<div class="img-container"> 
+  <%= link_to "", {}, {name: "photo_" + photo.id.to_s } %> 
+  <% if new_tag || show_tag then %>
+    <div class="tag-container" id="photo-div">
+      <%= image_tag photo.file_name, id: "curr-photo" %>
+      <div class="tag" id="new-tag"></div>
+    </div>
+  <% else %>
+    <%= image_tag photo.file_name %> 
+  <% end %>
+
+  <div class="photo-time">
+    <%= photo.date_time.getlocal.strftime("Posted %b %e, %l:%M %p") %>
+    <br />
+    <% if new_tag == false then %>
+      <%= link_to "Tag photo", new_photo_tag_path(photo), class: "new-tag-link" %> 
+      or 
+    <% end %>
+    <%= link_to "View tags (#{photo.tags.size})", photo_tags_path(photo) %> 
+  </div>
+
+  <div class="comment-container">
+    <div class="comment-header">
+      <%= "Comments (#{ comments.size }):" %>
+    </div>
+    <% comments.each do |comment| %>
+      <div class="comment-body">
+        <%= render partial: "shared/user_comment",
+                   locals: { comment: comment, author: comment.user } %>
+      </div>
+    <% end %>
+
+    <div class="comment-body last-comment">
+      <% if new_comment == true then # input for a new comment %>
+          <%= render "new_comment_form" %>
+      <% else # new comment button %>
+          <%= link_to "New Comment", new_photo_comment_path(photo) %> 
+      <% end %>
+    </div>
+  </div>
+</div>

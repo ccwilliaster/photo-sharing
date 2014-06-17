@@ -1,0 +1,40 @@
+<div class="new-user-container">
+  Please enter the following information to create a new account:
+  <%= form_tag(@user, method:"post") do %>
+    <% if @user.errors.any? then %> 
+      <div id="errors">
+        <h4>Login information was invalid:</h4>
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table class="form">
+      <tr>
+        <td>Username</td>
+        <td><%= text_field_tag(:login, value=@user.login) %></td>
+      </tr>
+      <tr>
+        <td>First name</td>
+        <td><%= text_field_tag(:first_name, value=@user.first_name) %></td>
+      </tr>
+      <tr>
+        <td>Last name</td>
+        <td><%= text_field_tag(:last_name, value=@user.last_name) %></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><%= password_field_tag(:password) %></td>
+      </tr>
+      <tr>
+        <td>Re-enter password</td>
+        <td><%= password_field_tag(:password_confirmation) %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= submit_tag("Create user") %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

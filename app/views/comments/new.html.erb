@@ -1,0 +1,21 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "new_comment" %>
+<% end %>
+
+<% if @comment.errors.any? then %>
+  <div id="errors">
+    <h4>Invalid comment:</h4>
+    <ul>
+      <% @comment.errors.full_messages.each do |msg| %> 
+        <li><%= msg %></li>
+      <% end %> 
+    </ul>
+  </div>
+<% end %>
+<div class="container">
+  <div class="new-comment-header">
+  </div>
+    <%= render partial: "shared/user_photo",
+               locals: { photo: @photo, comments: @photo.comments, 
+                         new_comment: true, new_tag: false, show_tag: false } %>
+</div>

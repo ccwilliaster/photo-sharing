@@ -1,0 +1,30 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "new_photo" %>
+<% end %>
+
+<div class="new-photo-container">
+   
+  <div class="new-photo-header">
+    Please select a photo to upload:<br /><br />
+  </div>
+  <% if flash.notice %>
+    <div id="notices"><%= flash.notice %></div>
+  <% end %>
+  <% if @photo.errors.any? then %>
+    <div id="errors">
+      <h4>Upload failed due to</h4>
+      <ul>
+        <% @photo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_for(@photo) do |form| %>
+    <div class="new-photo-form">
+      <%= form.file_field(:file_name) %><br/>
+      <%= form.submit("Upload") %>
+      or go to <%= link_to "user photo page", user_path(@curr_user) %>
+    </div>
+  <% end %>
+</div>

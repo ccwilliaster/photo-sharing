@@ -1,0 +1,11 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "new_user" %>
+  <%= stylesheet_link_tag "user_login" %>
+<% end %>
+
+<div class="login-container">
+  <% if flash.notice %>
+    <div id="notices"><%= flash.notice %></div>
+  <% end %>
+  <%= render "new_user_form" %>
+</div>

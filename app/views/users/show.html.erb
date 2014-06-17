@@ -1,0 +1,26 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "show_user" %>
+<% end %>
+
+<div class="container">
+  <% if flash.notice %>
+    <div id="notices"><%= flash.notice %></div>
+  <% end %>
+  <br />
+  <div class="user-header">
+    <%= "#{@username}'s photos:" %>
+    <div>
+      <%= link_to "go to all users", users_path, class: "user-idx" %>
+    </div>
+  </div>
+  <% if @photos.size > 0 %>
+    <% @photos.each do |photo| %> 
+      <%= render partial: "shared/user_photo", 
+                 locals: { photo: photo, comments: photo.comments, 
+                           new_comment: false, new_tag: false, show_tag: false } %>
+      <div class="photo-break"></div>
+    <% end %>
+  <% else %>
+    <div class="no-photos">No photos yet!</div>
+  <% end %>
+</div>

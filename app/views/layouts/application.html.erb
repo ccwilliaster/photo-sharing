@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= @title %></title>
+    <%= yield :stylesheet %>
+    <%= yield :javascript %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application", :type => "text/javascript" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="header" class="plaid-1">
+      <div id="toggle-div" class="plaid-1">
+        <a id="toggle-btn" href="#" title="Click me!" onclick="toggleHeader();">
+          ccwillia cs142
+        </a>
+      </div>
+
+      <div id="login-status-bar">
+        <% if session[:user_id] %>
+          <span id="login-link">
+            Welcome, <%= @curr_user.first_name %>!
+            <%= link_to "Log out", logout_users_path %>
+          </span>
+          <span id="new-photo-link">
+            <%= link_to "Upload photo", new_photo_path %>
+          </span>
+        <% else %>
+          <%= link_to "Log in", login_users_path %>
+        <% end %>
+      </div>     
+    </div>
+    
+    <%= yield %>
+  
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<%= form_tag("post_login", method: "post") do %>
+  <% if @user.errors.any? then %>
+    <div id="errors">
+      <h3>Invalid login due to 
+        <%= pluralize(@user.errors.size,"error") %></h3>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>  
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="form">
+    <tr>
+      <td class="label">Login name</td>
+      <td><%= text_field_tag(:login, value=@user.login)  %></td>
+    </tr>
+    <tr>
+      <td class="label">Password</td>
+      <td><%= password_field_tag(:password)  %></td>
+    </tr>
+    <tr>
+      <td class="submit"><%= submit_tag("Login") %> or</td>
+      <td class="create-acct"><%= link_to "Create account", new_user_path %></td>
+    </tr>
+  </table>
+<% end %>

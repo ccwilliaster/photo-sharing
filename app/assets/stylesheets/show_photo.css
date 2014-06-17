@@ -1,0 +1,45 @@
+.photo-time {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  color: #555;
+}
+.photo-break {
+  clear: both;
+  margin: 20px;
+}
+
+.img-container{ 
+  float: left;
+  clear: left;
+
+  position: relative;
+  left: 30px;
+  
+  width: 300px; 
+  padding: 25px;
+  border-radius: 10px;
+  background-color: LightGray;
+}
+
+.img-container, img {
+  display: block;
+  margin: auto;
+}
+
+#photo-div {
+  display: inline-block;
+}
+
+img {
+  max-width: 300px; /* Restrict to 300px proportionally */
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+a.user-page {
+  font-size: 15px;
+}
+

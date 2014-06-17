@@ -1,0 +1,13 @@
+.container {
+  float: left;
+  width: 800px;
+}
+
+.new-tag-header {
+  float: right;
+  font-weight: bold;
+  font-size: 20px;
+  color: #d9534f; 
+  padding: 10px;
+}
+

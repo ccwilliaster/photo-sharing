@@ -1,0 +1,7 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "tags" %>
+<% end %>
+
+<%= render partial: "shared/user_photo",
+           locals: { photo: photo, comments: photo.comments, 
+                     new_comment: false, new_tag: new_tag, show_tag: show_tag } %>

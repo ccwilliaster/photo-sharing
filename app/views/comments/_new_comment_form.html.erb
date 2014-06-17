@@ -1,0 +1,10 @@
+<%= form_tag(photo_comments_path(@photo), method: "post") do %>
+  <div class="comment-content-header">
+    New comment:
+  </div>
+  <div>
+    <%= text_area_tag(:comment, nil, rows: 2, cols: 35 ) %>
+    <br/>
+    <%= submit_tag("Post comment") %>
+  </div>
+<% end %>

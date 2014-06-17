@@ -1,0 +1,61 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "index_users" %>
+<% end %>
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag "AjaxRequest.js", :type => "text/javascript" %>
+<% end %> 
+
+<% if flash.notice %>
+  <div id="notices"><%= flash.notice %></div>
+<% end %>
+
+<div><br /></div>
+<div class="index-header">
+</div> 
+<div class="container">
+  <div class="user-container">
+    View photos by user
+    <table class="user-list">
+      <% @users.each do |user| %>
+        <tr class="user">
+          <td>
+            <%= link_to user.full_name, user_path(user.id), class: "user-page" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="search-container">
+    Search for photos by user or comment.<br />
+    Click on photo to view it in full.<br /><br />
+    <form class="search-form" action="javascript:doNothing();">
+      <div><input type="text" id="photo-query" />search query</div>
+      <div id="photo-results"></div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var doNothing = function() { /* empty */ }
+  var query     = document.getElementById("photo-query");
+  var results   = document.getElementById("photo-results");
+
+  // Execute AJAX request upon keydown event in text box
+  query.onkeyup = function(event) {
+    request.execute("query=" + this.value);
+  }
+
+  // Update the results div content upon success
+  var onsuccess = function(responseText) {
+    results.innerHTML = responseText;
+  }
+
+  var request = new AjaxRequest({
+      "url" : "<%= search_photos_path %>", 
+      "method"  : "GET",
+      "success" : onsuccess 
+  });
+</script>
+

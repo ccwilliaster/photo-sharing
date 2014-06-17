@@ -1,0 +1,62 @@
+.photo-time {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: right;
+  color: #555;
+}
+
+.img-container { 
+  width: 300px; 
+  padding: 25px;
+  border-radius: 10px;
+  background-color: LightGray;
+}
+
+.img-container, img {
+  display: block;
+  margin: auto;
+}
+
+img {
+  max-width: 300px; /* Restrict to 300px proportionally */
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.comment-container {
+  background-color: white;
+  border: 1px solid DimGray;
+  padding: 0px;
+}
+
+.comment-header {
+  color: white;
+  font-weight: bold;
+  padding: 0px 5px;
+  background-color: #428bca;
+  border-bottom: 1px solid DimGray;
+}
+
+.comment-body {
+  padding: 3px 10px;
+  margin-top: 5px;
+  background-color: Gainsboro;
+}
+
+.comment-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.comment-time {
+  color: #999;
+  font-size: 12px;
+  float: right;
+}
+
+a.user-page {
+  font-size: 15px;
+}
+

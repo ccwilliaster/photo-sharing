@@ -1,0 +1,30 @@
+<div class="tag-form-container">
+  <% if @tag.errors.any? then %>
+    <div id="errors">
+      <h4>Invalid tag:</h4>
+      <ul>
+        <% @tag.errors.full_messages.each do |msg| %>
+          <li><%= msg %></ul>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  Tag a user by selecting them from the dropdown and dragging
+  over their location on the image. 
+  <br /><br />
+  You may <a class="tag-reset" onmousedown="reset()">clear your selection</a> 
+  at any point
+  <%= form_tag( photo_tags_path(photo), method: "post") do %>
+    <div class="form-wrapper">
+      <%= hidden_field_tag("originX") %>
+      <%= hidden_field_tag("originY") %>
+      <%= hidden_field_tag("width") %>
+      <%= hidden_field_tag("height") %>
+      <%= select_tag("user_id", 
+                     options_from_collection_for_select(users, "id", "full_name"),
+                     include_blank: true ) %> 
+      <br />
+      <%= submit_tag("Tag user") %>
+    </div>
+  <% end %>
+</div>
